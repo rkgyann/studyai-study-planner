@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Planner | StudyAI</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- ======================================
+         SIDEBAR
+    ======================================= -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>Study<span>AI</span></h2>
+        </div>
+
+        <div class="profile">
+            <div class="profile-image">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <div class="profile-info">
+                <h3>Student</h3>
+                <p>Keep learning!</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <p class="menu-heading">MENU</p>
+
+            <a href="#dashboard" class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#subjects" class="nav-link">
+                <i class="fa-solid fa-book-open"></i>
+                <span>My Subjects</span>
+            </a>
+
+            <a href="#study-planner" class="nav-link">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Study Planner</span>
+            </a>
+
+            <a href="#assignments" class="nav-link">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Assignments</span>
+            </a>
+
+            <a href="#progress" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>My Progress</span>
+            </a>
+
+            <p class="menu-heading">TOOLS</p>
+
+            <a href="#ai-assistant" class="nav-link">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Assistant</span>
+            </a>
+
+            <a href="#pomodoro" class="nav-link">
+                <i class="fa-solid fa-stopwatch"></i>
+                <span>Focus Timer</span>
+            </a>
+
+            <a href="#settings" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <i class="fa-solid fa-lightbulb"></i>
+            <p>Small steps every day lead to big results!</p>
+        </div>
+
+    </aside>
+
+
+    <!-- ======================================
+         MAIN CONTENT
+    ======================================= -->
+    <main class="main-content" id="dashboard">
+
+        <!-- HEADER -->
+        <header class="top-header">
+
+            <div class="header-title">
+                <h1>Dashboard</h1>
+                <p>Welcome back! Ready to learn something new?</p>
+            </div>
+
+            <div class="header-actions">
+
+                <button type="button"
+                        class="icon-button"
+                        id="theme-toggle"
+                        aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button type="button"
+                        class="icon-button notification-button"
+                        aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="header-profile">
+                    <div class="avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME BANNER -->
+        <section class="welcome-banner">
+
+            <div class="welcome-text">
+
+                <span class="welcome-label">
+                    YOUR LEARNING JOURNEY
+                </span>
+
+                <h2>Make Today Count! 🚀</h2>
+
+                <p>
+                    Every study session brings you one step closer
+                    to your goals. Stay focused and keep going!
+                </p>
+
+                <a href="#study-planner" class="primary-button">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    View Study Plan
+                </a>
+
+            </div>
+
+            <div class="welcome-illustration">
+                <i class="fa-solid fa-book-open-reader"></i>
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             STATISTICS
+        ======================================= -->
+        <section class="statistics-section">
+
+            <div class="section-heading">
+                <h2>Your Overview</h2>
+
+                <span class="date-label" id="current-date">
+                    Today's Overview
+                </span>
+            </div>
+
+            <div class="statistics-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Study Hours</p>
+                        <h3 id="study-hours">2.5 hrs</h3>
+                        <span class="stat-note">Keep it up!</span>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Tasks Completed</p>
+                        <h3 id="completed-tasks">8/12</h3>
+                        <span class="stat-note">Great progress!</span>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Active Subjects</p>
+                        <h3 id="active-subjects">5</h3>
+                        <span class="stat-note">Keep learning!</span>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Weekly Goal</p>
+                        <h3 id="weekly-goal">70%</h3>
+                        <span class="stat-note">Almost there!</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             STUDY PLAN AND ASSIGNMENTS
+        ======================================= -->
+        <div class="dashboard-grid">
+
+            <!-- STUDY SCHEDULE -->
+            <section class="content-card study-schedule"
+                     id="study-planner">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Today's Study Plan</h2>
+                        <p>Your daily learning schedule</p>
+                    </div>
+
+                    <button type="button"
+                            class="small-button"
+                            id="add-session">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Session
+                    </button>
+
+                </div>
+
+                <div class="schedule-list" id="schedule-list">
+
+                    <div class="schedule-item">
+
+                        <div class="schedule-time">
+                            <span>09:00 AM</span>
+                            <small>10:00 AM</small>
+                        </div>
+
+                        <div class="schedule-indicator purple-line"></div>
+
+                        <div class="schedule-details">
+                            <h3>Data Structures</h3>
+                            <p>Arrays and Linked Lists</p>
+
+                            <span class="subject-tag purple-tag">
+                                Computer Science
+                            </span>
+                        </div>
+
+                        <div class="schedule-status completed-status">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="schedule-item">
+
+                        <div class="schedule-time">
+                            <span>10:30 AM</span>
+                            <small>11:30 AM</small>
+                        </div>
+
+                        <div class="schedule-indicator green-line"></div>
+
+                        <div class="schedule-details">
+                            <h3>Mathematics</h3>
+                            <p>Practice Calculus Problems</p>
+
+                            <span class="subject-tag green-tag">
+                                Mathematics
+                            </span>
+                        </div>
+
+                        <div class="schedule-status pending-status">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="schedule-item">
+
+                        <div class="schedule-time">
+                            <span>12:00 PM</span>
+                            <small>01:00 PM</small>
+                        </div>
+
+                        <div class="schedule-indicator orange-line"></div>
+
+                        <div class="schedule-details">
+                            <h3>Database Management</h3>
+                            <p>SQL Queries and Joins</p>
+
+                            <span class="subject-tag orange-tag">
+                                DBMS
+                            </span>
+                        </div>
+
+                        <div class="schedule-status pending-status">
+                            <i class="fa-regular fa-circle"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ASSIGNMENTS -->
+            <section class="content-card assignments-section"
+                     id="assignments">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Upcoming Assignments</h2>
+                        <p>Stay ahead of your deadlines</p>
+                    </div>
+
+                    <button type="button"
+                            class="text-button"
+                            id="view-assignments">
+                        View All
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="assignment-list" id="assignment-list">
+
+                    <div class="assignment-item">
+
+                        <div class="assignment-icon purple">
+                            <i class="fa-solid fa-file-code"></i>
+                        </div>
+
+                        <div class="assignment-details">
+                            <h3>Java Programming</h3>
+                            <p>Complete practical assignment</p>
+
+                            <span class="deadline">
+                                <i class="fa-regular fa-calendar"></i>
+                                Due tomorrow
+                            </span>
+                        </div>
+
+                        <span class="priority high-priority">
+                            High
+                        </span>
+
+                    </div>
+
+                    <div class="assignment-item">
+
+                        <div class="assignment-icon green">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+
+                        <div class="assignment-details">
+                            <h3>Database Project</h3>
+                            <p>Submit the project report</p>
+
+                            <span class="deadline">
+                                <i class="fa-regular fa-calendar"></i>
+                                Due in 3 days
+                            </span>
+                        </div>
+
+                        <span class="priority medium-priority">
+                            Medium
+                        </span>
+
+                    </div>
+
+                    <div class="assignment-item">
+
+                        <div class="assignment-icon orange">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+
+                        <div class="assignment-details">
+                            <h3>Web Development</h3>
+                            <p>Build a responsive webpage</p>
+
+                            <span class="deadline">
+                                <i class="fa-regular fa-calendar"></i>
+                                Due in 5 days
+                            </span>
+                        </div>
+
+                        <span class="priority low-priority">
+                            Low
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button type="button"
+                        class="outline-button"
+                        id="add-assignment">
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Assignment
+                </button>
+
+            </section>
+
+        </div>
+
+
+        <!-- ======================================
+             SUBJECTS
+        ======================================= -->
+        <section class="content-card subjects-section"
+                 id="subjects">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>My Subjects</h2>
+                    <p>Track your learning across different subjects</p>
+                </div>
+
+                <button type="button"
+                        class="small-button"
+                        id="add-subject">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Subject
+                </button>
+
+            </div>
+
+            <div class="subjects-grid" id="subjects-grid">
+
+                <div class="subject-card">
+
+                    <div class="subject-card-top">
+                        <div class="subject-icon purple">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <span class="subject-percentage">75%</span>
+                    </div>
+
+                    <h3>Programming</h3>
+                    <p>15 of 20 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill purple-fill"
+                             style="width: 75%;"></div>
+                    </div>
+
+                    <button type="button" class="subject-action">
+                        Continue Learning
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="subject-card">
+
+                    <div class="subject-card-top">
+                        <div class="subject-icon green">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+
+                        <span class="subject-percentage">60%</span>
+                    </div>
+
+                    <h3>Mathematics</h3>
+                    <p>12 of 20 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill green-fill"
+                             style="width: 60%;"></div>
+                    </div>
+
+                    <button type="button" class="subject-action">
+                        Continue Learning
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="subject-card">
+
+                    <div class="subject-card-top">
+                        <div class="subject-icon orange">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+
+                        <span class="subject-percentage">45%</span>
+                    </div>
+
+                    <h3>DBMS</h3>
+                    <p>9 of 20 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill orange-fill"
+                             style="width: 45%;"></div>
+                    </div>
+
+                    <button type="button" class="subject-action">
+                        Continue Learning
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="subject-card">
+
+                    <div class="subject-card-top">
+                        <div class="subject-icon blue">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+
+                        <span class="subject-percentage">85%</span>
+                    </div>
+
+                    <h3>Web Development</h3>
+                    <p>17 of 20 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill blue-fill"
+                             style="width: 85%;"></div>
+                    </div>
+
+                    <button type="button" class="subject-action">
+                        Continue Learning
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             PROGRESS AND FOCUS TIMER
+        ======================================= -->
+        <div class="dashboard-grid bottom-grid">
+
+            <!-- PROGRESS CHART -->
+            <section class="content-card progress-section"
+                     id="progress">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Study Progress</h2>
+                        <p>Your weekly study activity</p>
+                    </div>
+
+                    <select id="progress-filter"
+                            aria-label="Select progress period">
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="study-chart">
+                        Your study progress chart will appear here.
+                    </canvas>
+                </div>
+
+            </section>
+
+
+            <!-- POMODORO TIMER -->
+            <section class="content-card pomodoro-section"
+                     id="pomodoro">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Focus Timer</h2>
+                        <p>Focus better with Pomodoro</p>
+                    </div>
+
+                    <i class="fa-solid fa-stopwatch timer-heading-icon"></i>
+
+                </div>
+
+                <div class="timer-content">
+
+                    <div class="timer-circle">
+
+                        <div class="timer-inner">
+                            <h2 id="timer-display">25:00</h2>
+                            <p id="timer-status">Ready to Focus</p>
+                        </div>
+
+                    </div>
+
+                    <div class="timer-mode">
+
+                        <button type="button"
+                                class="timer-mode-button active"
+                                data-minutes="25">
+                            Focus
+                        </button>
+
+                        <button type="button"
+                                class="timer-mode-button"
+                                data-minutes="5">
+                            Short Break
+                        </button>
+
+                        <button type="button"
+                                class="timer-mode-button"
+                                data-minutes="15">
+                            Long Break
+                        </button>
+
+                    </div>
+
+                    <div class="timer-controls">
+
+                        <button type="button"
+                                class="timer-start-button"
+                                id="timer-start">
+                            <i class="fa-solid fa-play"></i>
+                            Start Focus
+                        </button>
+
+                        <button type="button"
+                                class="timer-reset-button"
+                                id="timer-reset"
+                                aria-label="Reset timer">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ======================================
+             AI STUDY ASSISTANT
+        ======================================= -->
+        <section class="content-card ai-assistant-section"
+                 id="ai-assistant">
+
+            <div class="ai-header">
+
+                <div class="ai-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div class="ai-title">
+                    <h2>AI Study Assistant</h2>
+                    <p>Your personal learning companion</p>
+                </div>
+
+                <span class="ai-status">
+                    <span class="status-dot"></span>
+                    Ready to help
+                </span>
+
+            </div>
+
+
+            <div class="ai-welcome-message">
+
+                <h3>What would you like to study today? ✨</h3>
+
+                <p>
+                    Ask for study tips, create a revision plan,
+                    understand difficult topics, or manage your time.
+                </p>
+
+            </div>
+
+
+            <!-- SUGGESTED PROMPTS -->
+            <div class="ai-suggestions">
+
+                <button type="button"
+                        class="suggestion-button"
+                        data-prompt="Create a daily study plan for a student">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Create a Study Plan
+
+                </button>
+
+                <button type="button"
+                        class="suggestion-button"
+                        data-prompt="Give me effective revision tips for exams">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Revision Tips
+
+                </button>
+
+                <button type="button"
+                        class="suggestion-button"
+                        data-prompt="Help me manage my study time effectively">
+
+                    <i class="fa-solid fa-clock"></i>
+                    Manage My Time
+
+                </button>
+
+            </div>
+
+
+            <!-- CHAT MESSAGES -->
+            <div class="chat-messages"
+                 id="chat-messages"
+                 aria-live="polite"
+                 aria-label="AI conversation">
+            </div>
+
+
+            <!-- CHAT INPUT -->
+            <form class="ai-chat-form" id="ai-chat-form">
+
+                <input
+                    type="text"
+                    id="ai-input"
+                    name="message"
+                    placeholder="Ask me anything about your studies..."
+                    aria-label="Message the AI study assistant"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit"
+                        aria-label="Send message"
+                        title="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+            </form>
+
+
+            <p class="ai-disclaimer">
+                <i class="fa-solid fa-circle-info"></i>
+                AI responses are generated through your connected AI service.
+            </p>
+
+        </section>
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+        <footer class="footer" id="settings">
+
+            <p>
+                © 2026 StudyAI. Built to make learning easier.
+            </p>
+
+            <p>
+                Learn smarter, not harder.
+                <i class="fa-solid fa-heart"></i>
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ======================================
+     JAVASCRIPT LIBRARIES
+======================================= -->
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Project JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
